@@ -1,0 +1,109 @@
+databaseChangeLog:
+- changeSet:
+    id: 26072024-1
+    author: Daniel.Aguilar
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: PK_c_authors
+            name: id
+            type: INTEGER
+        - column:
+            constraints:
+              nullable: false
+            name: fullname
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: pseudonym
+            type: VARCHAR(20)
+        - column:
+            constraints:
+              nullable: false
+            name: country
+            type: VARCHAR(20)
+        - column:
+            constraints:
+              nullable: false
+            name: fg_active
+            type: BOOLEAN
+        tableName: k_authors
+
+- changeSet:
+    id: 26072024-2
+    author: Daniel.Aguilar
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: PK_c_editoriales
+            name: id
+            type: INTEGER
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: ubicacion
+            type: VARCHAR(100)
+        - column:
+            constraints:
+              nullable: false
+            name: logo
+            type: VARCHAR(20)
+        - column:
+            constraints:
+              nullable: false
+            name: fecha_apertura
+            type: DATE
+        - column:
+            constraints:
+              nullable: false
+            name: fg_active
+            type: BOOLEAN
+        tableName: k_editoriales
+
+- changeSet:
+    id: 26072024-3
+    author: Daniel.Aguilar
+    changes:
+    - modifyDataType:
+        tableName: k_authors
+        columnName: fullname
+        newDataType: VARCHAR(30)
+
+- changeSet:
+    id: 26072024-4
+    author: Daniel.Aguilar
+    changes:
+    - addColumn:
+        tableName: k_authors
+        columns:
+        - column:
+            name: favorite_book
+            type: VARCHAR(20)
+
+- changeSet:
+    id: 26072024-5
+    author: Daniel.Aguilar
+    changes:
+    - createProcedure:
+        tableName: k_authors
+        procedureName: insert_editorial
+        path: ./store-procedures/insert_on_editorial.sql
+        stripComments: true
+        splitStatements: true
+        relativeToChangelogFile: true

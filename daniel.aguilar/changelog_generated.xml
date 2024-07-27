@@ -1,0 +1,45 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="Daniel.Aguilar (generated)" id="1722042271694-1">
+        <createTable tableName="k_authors">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_c_authors"/>
+            </column>
+            <column name="fullname" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pseudonym" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fg_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="favorite_book" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Daniel.Aguilar (generated)" id="1722042271694-2">
+        <createTable tableName="k_editoriales">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_c_editoriales"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ubicacion" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="logo" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fecha_apertura" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fg_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
