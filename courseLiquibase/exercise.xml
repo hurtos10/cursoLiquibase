@@ -1,0 +1,50 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="jared.trejo (generated)" id="1722271333969-1">
+        <createTable tableName="shirts">
+            <column name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="shirts_pkey"/>
+            </column>
+            <column name="marca" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modelo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="talla" type="numeric(5, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="color" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="precio" type="numeric(10, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jared.trejo (generated)" id="1722271333969-2">
+        <createTable tableName="shoes">
+            <column name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="shoes_pkey"/>
+            </column>
+            <column name="marca" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modelo" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="talla" type="numeric(5, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="color" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="precio" type="numeric(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,128 @@
+databaseChangeLog:
+  - changeSet:
+      id: 260724-2
+      author: jared.trejo
+      changes:
+        - createTable:
+            tableName: shoes
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: marca
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: modelo
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: talla
+                  type: decimal(5,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: color
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: precio
+                  type: decimal(10,2)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 260724-3
+      author: jared.trejo
+      changes:
+        - createTable:
+            tableName: shirts
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: marca
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: modelo
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: talla
+                  type: decimal(5,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: color
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: precio
+                  type: decimal(10,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 260724-4
+      author: jared.trejo
+      changes:
+        - modifyDataType:
+            tableName: shoes
+            columnName: marca
+            newDataType: varchar(100)
+        - modifyDataType:
+            tableName: shoes
+            columnName: precio
+            newDataType: decimal(12,2)
+
+      rollback:
+        - modifyDataType:
+            columnName: marca
+            newDataType: varchar(250)
+            tableName: shoes
+
+  - changeSet:
+      id: 260724-5
+      author: jared.trejo
+      changes:
+        - createProcedure:
+            procedureName: insert_shirt
+            procedureBody: |
+              CREATE OR REPLACE FUNCTION insert_shirt(
+                p_marca VARCHAR(255),
+                p_modelo VARCHAR(255),
+                p_talla DECIMAL(5,2),
+                p_color VARCHAR(50),
+                p_precio DECIMAL(10,2),
+                p_description VARCHAR(255)
+              )
+              RETURNS VOID AS $$
+              BEGIN
+                INSERT INTO shirts (marca, modelo, talla, color, precio, descripcion)
+                VALUES (p_marca, p_modelo, p_talla, p_color, p_precio, p_description);
+              END;
+              $$ LANGUAGE plpgsql;
+
+      rollback:
+        - sql:
+            string: DROP PROCEDURE IF EXISTS insert_shirt;
