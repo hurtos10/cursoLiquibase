@@ -1,7 +1,7 @@
 databaseChangeLog:
 - changeSet:
-    id: 231206-1
-    author: rafael.zapata
+    id: 1
+    author: miguel.bautista
     changes:
     - createTable:
         columns:
@@ -14,30 +14,21 @@ databaseChangeLog:
             name: id
             type: INTEGER
         - column:
-            constraints:
-              nullable: false
-            name: st_name
+            name: nombre
             type: TEXT
         - column:
-            constraints:
-              nullable: false
-            name: st_description
+            name: ap_paterno
             type: TEXT
         - column:
-            constraints:
-              nullable: false
-            name: fg_active
-            type: BOOLEAN
-        - column:
-            name: str_js_ui_schema
+            name: ap_materno
             type: TEXT
         - column:
-            name: str_js_schema
-            type: TEXT
-        tableName: k_form
+            name: edad
+            type: INTEGER
+        tableName: personas
 - changeSet:
-    id: 231206-2
-    author: rafael.zapata
+    id: 2
+    author: miguel.bautista
     changes:
     - createTable:
         columns:
@@ -46,36 +37,48 @@ databaseChangeLog:
             constraints:
               nullable: false
               primaryKey: true
-              primaryKeyName: PK_c_form_data
+              primaryKeyName: PK_direcciones
             name: id
             type: INTEGER
         - column:
-            constraints:
-              nullable: false
-            name: id_form
+            name: calle
+            type: TEXT
+        - column:
+            name: cp
             type: INTEGER
         - column:
-            constraints:
-              nullable: false
-            name: fg_active
-            type: BOOLEAN
+            name: numEXT
+            type: INTEGER
         - column:
-            name: str_js_data
+            name: numINT
+            type: INTEGER
+        - column:
+            name: colonia
             type: TEXT
-        tableName: k_form_data
+        - column:
+            name: ciudad
+            type: TEXT
+        - column:
+            name: municipio
+            type: TEXT
+        tableName: direcciones
 - changeSet:
-    id: 231206-3
-    author: rafael.zapata
+    id: 4
+    author: miguel.bautista
     changes:
-    - addForeignKeyConstraint:
-        baseColumnNames: id_form
-        baseTableName: k_form_data
-        constraintName: rl_form_data_x_c_form
-        deferrable: false
-        initiallyDeferred: false
-        onDelete: NO ACTION
-        onUpdate: NO ACTION
-        referencedColumnNames: id
-        referencedTableName: k_form
-        validate: true
+    -  modifyDataType:
+        columnName:  edad
+        newDataType:  TEXT
+        schemaName:  public
+        tableName:  personas
 
+- changeSet:
+    id: 5
+    author: miguel.bautista
+    changes:
+    -  addColumn:
+        tableName:  personas
+        columns:
+        - column:
+            name: sexo
+            type: TEXT
